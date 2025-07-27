@@ -53,7 +53,7 @@ def get_last_streak(sequence):
             break
     return {'value': val, 'length': length}
 
-st.title("Adaptive Number Predictor")
+st.title("Above/Below Predictor")
 
 st.sidebar.header("Add Data / Predict")
 
@@ -87,20 +87,14 @@ if sequence:
 
     last = sequence[-1]
     probs = biased_trans.loc[last].fillna(0)
-    pred_num = int(probs.idxmax())
-    conf_num = float(probs.max())
 
     prob_above = probs[3:].sum()
     prob_below = probs[:3].sum()
     pred_binary = "Above 2" if prob_above > prob_below else "Below 2"
     conf_binary = max(prob_above, prob_below)
 
-    st.subheader("Predictions")
-    st.write(f"**Exact Number:** {pred_num}  (Confidence: {conf_num:.1%})")
+    st.subheader("Prediction")
     st.write(f"**Above/Below 2:** {pred_binary}  (Confidence: {conf_binary:.1%})")
-
-    st.subheader("Probability Distribution")
-    st.bar_chart(probs)
 
     st.subheader("Streak Info")
     st.write(f"Current streak: {streak['value']} repeated {streak['length']} times")

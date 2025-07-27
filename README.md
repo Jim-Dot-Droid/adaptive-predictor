@@ -1,10 +1,11 @@
-# Adaptive Number Predictor
+# Above/Below Predictor
 
 This Streamlit app predicts:
-- Exact next number (0-5) with confidence
-- Above/Below 2 prediction with confidence
+- Whether the next number will be Above 2 or Below 2
+- Confidence for prediction
 - Adaptive learning and persistence
 - Bias adjustment for streaks
+- Shows streak info and transition matrix
 
 ## Deploy Steps
 1. Push these files to a GitHub repo.
